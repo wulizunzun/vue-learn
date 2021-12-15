@@ -17,8 +17,7 @@ export default {
   },
 
   created() {
-    const num = 123;
-
+    // const num = 123;
     // console.log(num === 123);
   },
 };
