@@ -1,18 +1,27 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js + TypeScript App" />
+    <p @click="handleClick()">123</p>
   </div>
 </template>
 
 <script lang="ts">
+// import { defineComponent, onMounted, getCurrentInstance } from "vue";
+import { defineAsyncComponent } from "vue";
 import { Options, Vue } from "vue-class-component";
-import HelloWorld from "@/components/HelloWorld.vue"; // @ is an alias to /src
 
 @Options({
   components: {
-    HelloWorld,
+    HelloWorld: defineAsyncComponent(
+      () => import("@/components/HelloWorld.vue")
+    ),
   },
 })
-export default class Home extends Vue {}
+export default class Home extends Vue {
+  public msg: String = "Welcome to Your Vue.js + TypeScript App";
+  public initVar: String = "";
+
+  mounted() {
+    this.initVar = "测试";
+  }
+}
 </script>
