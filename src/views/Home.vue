@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <p @click="handleClick()">123</p>
+    <About></About>
   </div>
 </template>
 
@@ -14,6 +14,7 @@ import { Options, Vue } from "vue-class-component";
     HelloWorld: defineAsyncComponent(
       () => import("@/components/HelloWorld.vue")
     ),
+    About: defineAsyncComponent(() => import("./About.vue")),
   },
 })
 export default class Home extends Vue {
