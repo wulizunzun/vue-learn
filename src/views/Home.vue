@@ -1,28 +1,59 @@
 <template>
   <div class="home">
-    <About></About>
+    <!-- <About></About> -->
+    {{ todos }}
   </div>
 </template>
 
 <script lang="ts">
-// import { defineComponent, onMounted, getCurrentInstance } from "vue";
-import { defineAsyncComponent } from "vue";
-import { Options, Vue } from "vue-class-component";
+import {
+  defineComponent,
+  ref,
+  reactive,
+  toRefs
 
-@Options({
+  // provide,
+  // onMounted,
+  // getCurrentInstance,
+  // defineAsyncComponent,
+} from "vue";
+// import { Options, Vue } from "vue-class-component";
+
+export default defineComponent({
+  name: "App",
+
   components: {
-    HelloWorld: defineAsyncComponent(
-      () => import("@/components/HelloWorld.vue")
-    ),
-    About: defineAsyncComponent(() => import("./About.vue")),
+    // About: defineAsyncComponent(() => import("./About.vue")),
   },
-})
-export default class Home extends Vue {
-  public msg: String = "Welcome to Your Vue.js + TypeScript App";
-  public initVar: String = "";
 
-  mounted() {
-    this.initVar = "测试";
+  setup() {
+    // 响应式的数据
+
+    const color = ref("red");
+    const state = reactive({
+      todos: [
+        { id: 0, name: "1" },
+        { id: 1, name: "2" },
+        { id: 2, name: "3" }
+      ]
+    });
+    return {
+      color,
+      ...toRefs(state)
+    };
   }
-}
+});
+// @Options({
+//   components: {
+//     About: defineAsyncComponent(() => import("./About.vue")),
+//   },
+// })
+// export default class Home extends Vue {
+//   public msg: String = "Welcome to Your Vue.js + TypeScript App";
+//   public initVar: String = "";
+
+//   mounted() {
+//     this.initVar = "测试";
+//   }
+// }
 </script>

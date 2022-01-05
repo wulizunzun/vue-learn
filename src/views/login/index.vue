@@ -1,14 +1,5 @@
 <template>
-  <div class="about">
-    <h2>name: {{ state.name }}</h2>
-    <h2>age: {{ state.age }}</h2>
-    <h2>wife: {{ state.wife }}</h2>
-    <input type="text" name="" id="" ref="inputRef" />
-    <hr />
-    <button @click="update">{{ color }}</button>
-
-    <!-- <HelloWorld></HelloWorld> -->
-  </div>
+  <div class="login">登录页</div>
 </template>
 
 <script lang="ts">
@@ -16,22 +7,11 @@ import {
   defineComponent,
   ref,
   reactive,
-  inject,
-  onMounted,
-  // defineAsyncComponent,
-  // getCurrentInstance
+  // inject,
+  onMounted
 } from "vue";
-// import { useCurrentInstance } from "@/utils/vue";
 
 export default defineComponent({
-  /* 使用vue3的composition API */
-
-  // components: {
-  //   HelloWorld: defineAsyncComponent(
-  //     () => import("@/components/HelloWorld.vue")
-  //   ),
-  // },
-
   setup() {
     /*
     定义响应式数据对象
@@ -41,8 +21,8 @@ export default defineComponent({
       age: 25,
       wife: {
         name: "marry",
-        age: 22,
-      },
+        age: 22
+      }
     });
 
     const inputRef = ref<HTMLElement | null>(null);
@@ -51,20 +31,20 @@ export default defineComponent({
       inputRef.value && inputRef.value.focus();
     });
 
-    const color = inject("color");
+    // const color = inject("color");
 
     return {
       state,
       inputRef,
-      color,
+      // color,
       update(): void {
         // 更新响应式数据的函数
         state.name += "--";
         state.age += 1;
         state.wife.name += "++";
         state.wife.age += 2;
-      },
+      }
     };
-  },
+  }
 });
 </script>
