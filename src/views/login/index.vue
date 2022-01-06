@@ -1,50 +1,65 @@
 <template>
-  <div class="login">登录页</div>
+  <pageCopy></pageCopy>
+  <pageForm></pageForm>
+  <button @click="remove">删除首项</button>
+  <p>{{ state.copyLinkList }}</p>
 </template>
 
 <script lang="ts">
-import {
-  defineComponent,
-  ref,
-  reactive,
-  // inject,
-  onMounted
-} from "vue";
+import { defineComponent, provide, reactive, defineAsyncComponent } from "vue";
 
 export default defineComponent({
+  components: {
+    pageCopy: defineAsyncComponent(
+      () => import("./components/page-copy/index.vue")
+    ),
+    pageForm: defineAsyncComponent(
+      () => import("./components/page-form/index.vue")
+    )
+  },
+
   setup() {
-    /*
-    定义响应式数据对象
-    */
+    // /*
+    // 定义响应式数据对象
+    // */
+
+    // const inputRef = ref<HTMLElement | null>(null);
+
+    // onMounted(() => {
+    //   inputRef.value && inputRef.value.focus();
+    // });
+
     const state = reactive({
-      name: "tom",
-      age: 25,
-      wife: {
-        name: "marry",
-        age: 22
-      }
+      copyLinkList: [
+        { title: "知乎专栏" },
+        { title: "圆桌" },
+        { title: "发现" },
+        { title: "移动应用" },
+        { title: "联系我们" },
+        { title: "来知乎工作" },
+        { title: "注册机构号" },
+        { title: "Investor Relations" }
+      ]
     });
 
-    const inputRef = ref<HTMLElement | null>(null);
-
-    onMounted(() => {
-      inputRef.value && inputRef.value.focus();
-    });
-
-    // const color = inject("color");
+    provide("state", state);
 
     return {
       state,
-      inputRef,
-      // color,
-      update(): void {
-        // 更新响应式数据的函数
-        state.name += "--";
-        state.age += 1;
-        state.wife.name += "++";
-        state.wife.age += 2;
+
+      remove(): void {
+        state.copyLinkList.splice(0, 1);
       }
     };
   }
 });
 </script>
+
+<style langs="scss">
+/* .login {
+  position: relative;
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+} */
+</style>

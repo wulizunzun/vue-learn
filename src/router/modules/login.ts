@@ -1,6 +1,6 @@
-// import { router } from '@/interface/router.ts';
+import { router } from '@/interface/router.js';
 
-const routingList: Array<object> = [
+const routingList: Array<router> = [
     {
         path: "/login",
         name: "login",

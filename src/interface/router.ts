@@ -3,6 +3,3 @@ export interface router {
     name: string;
     component: object;
 }
-
-// console.log(123)
-// export const router: string = '123'
