@@ -1,8 +1,6 @@
 <template>
   <pageCopy></pageCopy>
   <pageForm></pageForm>
-  <button @click="remove">删除首项</button>
-  <p>{{ state.copyLinkList }}</p>
 </template>
 
 <script lang="ts">

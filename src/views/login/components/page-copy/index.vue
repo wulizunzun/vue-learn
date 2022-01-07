@@ -6,9 +6,7 @@
       >
     </p>
     <p>
-      © 2022 知乎京 ICP 证 110745 号京 ICP 备 13052560 号 - 1京公网安备
-      11010802020088 号出版物经营许可证互联网药品信息服务资格证书（京）-
-      非经营性 - 2017 - 0067
+      {{ state.copy }}
     </p>
   </div>
 </template>
@@ -23,12 +21,25 @@ export default defineComponent({
     return {
       state
     };
-  },
-
-  data() {
-    return {};
   }
 });
 </script>
 
-<style langs="scss" scope></style>
+<style lang="scss" scope>
+.copy {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  color: #fff;
+
+  a {
+    color: #fff;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+</style>
